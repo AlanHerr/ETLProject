@@ -13,7 +13,7 @@ class Transformer:
         df = self.df.copy()
         # Limpieza de columnas de fecha y hora
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
-        df['Time'] = pd.to_datetime(df['Time'], errors='coerce').dt.time
+        df['Time'] = pd.to_datetime(df['Time'],format='%H:%M:%S', errors='coerce').dt.time
         # Eliminar filas con Booking ID nulo
         df = df.dropna(subset=['Booking ID'])
         # Rellenar valores nulos en columnas numéricas con 0
